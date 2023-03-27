@@ -12,35 +12,45 @@ class LinkedList
     if @head == nil
       @head = Node.new(data)
     else 
-      current_node = @head                   # assign current node as the head
+      current_node = @head
       until current_node.next_node == nil
-        current_node = current_node.next_node             # until the current nodes, next_node is nil, do the followin
+        current_node = current_node.next_node
       end
-      current_node.next_node = Node.new(data)                        # make current node the head
-    end                                         # current_node.next_node = Node.new(data)
+      current_node.next_node = Node.new(data)
+    end
     return data
-                                     # shows list.append("doop") as "doop"
+    
   end
 
   def count
-   if @head == nil
-    @counter = 0
-   elsif @head != nil
-    until @next_node == nil
-      @counter += 1
-      break
+    if empty?
+      0
+    else 
+      count_node(head, 0)
     end
-   end
+  end
 
-    # until @next_node == nil
-    #   @counter += 1
-    # break
-    # end
-    # @counter
+  def count_node(node, counter)
+    if node.tail?
+      counter
+    else
+      count_node(node.next_node, counter +=1)
+    end
   end
 
   def to_string
-    "#{list.data}"
+    current_node = head
+    if @head != nil
+      strings = []
+      until current_node.next_node == nil
+        strings << current_node.data
+        current_node = current_node.next_node
+      end
+      strings.join(" ")
+    else
+      
+    end
+    # strings.join(" ")
   end
 
   def empty?
@@ -58,11 +68,5 @@ class LinkedList
   def new_node(node)
     Node.new(node)
   end
-  # def empty?
-  #   if self.head == nil
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
+
 end
