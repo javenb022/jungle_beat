@@ -3,9 +3,10 @@ require "./lib/node"
 class LinkedList
   attr_reader :head, :counter
   attr_accessor :head
-  def initialize
+  def initialize(data = nil)
     @head = nil
     @counter = 0
+    @data = Node.new(data)
   end
 
   def append(data)
