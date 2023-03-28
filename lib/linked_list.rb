@@ -80,6 +80,20 @@ class LinkedList
     node_at(node.next_node, index, counter += 1)
   end
 
+  def pop
+    if self.empty?
+      return "List is empty"
+    else
+      current_node = head
+      while current_node.next_node.next_node != nil
+        current_node = current_node.next_node
+      end
+      last_node = current_node.next_node
+      current_node.next_node = nil
+      last_node.data
+    end
+
+  end
 
   def count
     current_node = head
