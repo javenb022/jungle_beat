@@ -33,19 +33,18 @@ class LinkedList
     return data
   end
 
-  def insert(index, data)
-    node = Node.new(data)
-    next_node = node_at(head, index)
-    node_at(head, index - 1).next_node = node
-    node.next_node = next_node
-    return node.data
+  def insert(position, data)
+    node_1 = new_node(data)
+    prior_node = node_at(head, position - 1)
+    next_node = node_at(head, position)
+    prior_node.next_node = node_1
+    node_1.next_node = next_node
+    return node_1.data
   end
 
   def node_at(node, index, counter = 0)
-    if index == counter
-      node_at(node.next_node, index, counter += 1)
-    end
-    return node
+    return node if index == counter
+    node_at(node.next_node, index, counter += 1)
   end
 
   def count
@@ -64,15 +63,15 @@ class LinkedList
   
   def to_string
     current_node = head
-    # if @head != nil
-    strings = []
+    if @head != nil
+      strings = []
     # while current_node.next_node != nil
-    until current_node == nil
-      strings << current_node.data
-      current_node = current_node.next_node
+      until current_node == nil
+        strings << current_node.data
+        current_node = current_node.next_node
+      end
+      strings.join(" ")
     end
-    strings.join(" ")
-    # end
   end
   
   def empty?
