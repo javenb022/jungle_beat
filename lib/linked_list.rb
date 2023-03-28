@@ -33,6 +33,19 @@ class LinkedList
     return data
   end
 
+  def includes?(data)
+    current_node = head
+    if @head != nil
+      strings = []
+      until current_node == nil
+        strings << current_node.data
+        current_node = current_node.next_node
+      end
+      strings.join(" ")
+    end
+    strings.include?(data)
+  end
+
   def find(start, amount)
     current_node = head
     counter = 0
@@ -67,6 +80,7 @@ class LinkedList
     node_at(node.next_node, index, counter += 1)
   end
 
+
   def count
     current_node = head
     if current_node == nil
@@ -85,7 +99,6 @@ class LinkedList
     current_node = head
     if @head != nil
       strings = []
-    # while current_node.next_node != nil
       until current_node == nil
         strings << current_node.data
         current_node = current_node.next_node

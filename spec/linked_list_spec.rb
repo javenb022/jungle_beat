@@ -23,7 +23,7 @@ RSpec.describe LinkedList do
     expect(list.to_string).to eq("doop deep")
   end
 
- it "adds prepend, insert, find, pop, includes? methods(Iteration 2)" do
+ it "adds prepend, insert methods(Iteration 2)" do
   list = LinkedList.new
   expect(list.append("plop")).to eq("plop")
   
@@ -34,6 +34,25 @@ RSpec.describe LinkedList do
   expect(list.count).to eq(3)
   expect(list.insert(1, "woo")).to eq("woo")
   expect(list.to_string).to eq("dop woo plop suu")
+ end
+
+ it "adds methods for find, includes?, and pop(Iteration 2)" do
+  list = LinkedList.new
+  list.append("deep")
+  list.append("woo")
+  list.append("shi")
+  list.append("shu")
+  list.append("blop")
+
+  expect(list.find(2, 1)).to eq("shi")
+  expect(list.find(1, 3)).to eq("woo shi shu")
   require 'pry'; binding.pry
+
+  # expect(list.includes?("deep")).to eq(true)
+  # expect(list.includes?("dep")).to eq(false)
+
+  # expect(list.pop).to eq("blop")
+  # expect(list.pop).to eq("shu")
+  # expect(list.to_string).to eq("deep woo shi")
  end
 end
