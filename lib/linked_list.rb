@@ -33,6 +33,26 @@ class LinkedList
     return data
   end
 
+  def find(start, amount)
+    current_node = head
+    counter = 0
+    until counter == start
+      current_node = current_node.next_node
+      counter += 1
+    end
+
+    if amount == 1
+      return current_node.data
+    else amount > 1
+      str = []
+      amount.times do
+        str << current_node.data
+        current_node = current_node.next_node
+      end
+      str.join(" ")
+    end
+  end
+
   def insert(position, data)
     node_1 = new_node(data)
     prior_node = node_at(head, position - 1)
