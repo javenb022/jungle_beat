@@ -16,8 +16,21 @@ class JungleBeat
     return data
   end
 
+  def prepend(data)
+    nodes = data.split(" ")
+    nodes.each do |node|
+      list.prepend(node)
+    end
+    return data
+  end
+
   def count
     list.count
+  end
+
+  def play
+    beats = list.to_string
+    `say -r 170 -v  Boing #{beats}`
   end
 
 end
